@@ -38,7 +38,7 @@ FirebaseConfig config;
 // Firebase database path
 String databasePath = ""; 
 // Firebase Unique Identifier
-String fuid = ""; 
+String fuid = "0668ceea-7680-44f4-9b42-0f742f059e94"; 
 // Stores the elapsed time from device start up
 unsigned long elapsedMillis = 0; 
 // The frequency of sensor updates to firebase, set to 10seconds
@@ -110,6 +110,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+   Serial.printf("Get string... %s\n", Firebase.RTDB.getString(&fbdo, F("/relay/state")) ? fbdo.to<const char *>() : fbdo.errorReason().c_str());
 }
 
 void handleRequest(AsyncWebServerRequest *request){
